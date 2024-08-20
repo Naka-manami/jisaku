@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/app', 'CartController@index')->name('cart');
+Route::get('/app', 'HomeController@index')->name('favo');
