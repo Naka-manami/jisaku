@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DisplayController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,12 +12,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/app', 'CartController@index')->name('cart');
-Route::get('/app', 'HomeController@index')->name('favo');
+//ホームボタンクリックでホームに戻る
+Route::get('/', 'DisplayController@index')->name('home');
+//カートボタンクリックでカートページへ移動
+Route::get('/cart', 'CartController@index')->name('cart');
+//お気に入りボタンクリックでお気に入りページへ移動
+Route::get('/favo', 'HomeController@index')->name('favo');
+//検索ボタンクリックし該当の商品一覧(itemsディレクトリ内)へ移動
+Route::get('/items/item_list',[DisplayController::class,'itemSearch'])->name('item.list');
+//
+Route::get('/item/item_list',[ItemComtroller::class,'viewItemlist'])->name('view_itemlist');
