@@ -28,20 +28,15 @@
     <div class="container2">
     <!-- 検索結果のアイテムを表示検索していない時は表示なし -->
             <div class="item-list">
+                @foreach($items as $item)
                 <div class="no1">
                     <a href="遷移させたいURL"> 
                         <img src="images/pic1.jpeg" id="pic">
                     </a>
-                    <h>商品名</h>
-                    <p>金額</p>
+                    <h>{{$item['item_name']}}</h>
+                    <p>{{$item['price']}}</p>
                 </div>
-                <div class="no2">
-                    <a href="遷移させたいURL"> 
-                        <img src="images/pic1.jpeg" id="pic">
-                    </a>
-                    <h>商品名</h>
-                    <p>金額</p>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

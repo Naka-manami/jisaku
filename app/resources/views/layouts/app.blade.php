@@ -62,16 +62,25 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('account') }}">
+                                            {{__('アカウント情報')}}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('buy') }}">
+                                            {{__('購入履歴')}}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('ログアウト') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.home')}}">事業者ページへ(最後に削除)</a>
                             </li>
                         @endguest
                     </ul>
