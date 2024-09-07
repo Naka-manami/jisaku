@@ -3,11 +3,14 @@
 @section('content')
 <main>
   <div class="container">
-  <form action="{{ route('home')}}" method="get">
+  <form action="{{ route('home',['id'=>$item['id']&&$user['id'])}}" method="get">
   @csrf
-    <p>商品内容を変更しました</p>
+    <div>
+      <p>購入完了しました</p>
+    </div>
     <input type="submit" value="ホームへ戻る">
   </form>
+  
   </div>
 </main>
 @endsection

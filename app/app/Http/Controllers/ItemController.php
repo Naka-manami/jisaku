@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 
@@ -38,6 +39,20 @@ class ItemController extends BaseController
          ]);
     }
 
+     public function itemDetail(int $id)
+    {
+        $instance = new Item;
+        $item = $instance->find($id);
+
+        // $record->image = $request->image;
+        // $record->item_name = $request->item_name;
+        // $record->price = $request->price;
+        return view('items/item_detail',[
+            'id' => $id,
+            'item' =>$item,
+        ]);
+    }
+
     //★事業者用
     //事業者用ホームへ遷移
     public function index()
@@ -49,6 +64,7 @@ class ItemController extends BaseController
     {
         return view('items/item_registration');
     }
+    //商品追加ページにて商品登録
     public function Itemregistrationcomp(Request $request)
     {
         $item = new Item;
@@ -60,10 +76,17 @@ class ItemController extends BaseController
         return view('items/item_registrationcomp');
     }
 
+    
     //事業者用商品一覧へ移動
     public function moveadminitemlist()
     {
-        return view('items/admin_itemlist');
+        $instans = new Item;
+        $items = $instans->all();
+
+
+        return view('items/admin_itemlist',[
+            'items' => $items,
+        ]);
     }
 
     

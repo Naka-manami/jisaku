@@ -30,7 +30,7 @@
             <div class="item-list">
                 @foreach($items as $item)
                 <div class="no1">
-                    <a href="遷移させたいURL"> 
+                    <a href="{{route('item.detail',['id'=>$item['id']]) }}"> 
                         <img src="images/pic1.jpeg" id="pic">
                     </a>
                     <h>{{$item['item_name']}}</h>

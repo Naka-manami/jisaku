@@ -8,6 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+   
     use Notifiable;
 
     /**
@@ -15,9 +17,14 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $fillable = ['account','email','password','remember_token','name','tel','post','address'
     ];
+    public function item(){
+        return $this->hasmany('App\Item','user_id','id');
+    }
+    public function cart(){
+        return $this->hasmany('App\Cart','user_id','id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +43,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+
 }

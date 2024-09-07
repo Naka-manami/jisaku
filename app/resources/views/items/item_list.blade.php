@@ -4,16 +4,15 @@
 @foreach($items as $item)
 <div class="container">
             <div class="item-list">
-                <div class="no1">
+                <div class="list">
                    
-                    <a href="遷移させたいURL"> 
+                    <a href="{{ route('item_detail',['id'=>$result['id']]) }}"> 
                         <img src>{{$item['image']}}<img>
                     </a>
                     <h>{{ $item['item_name']}}</h>
                     <p>{{$item['price']}}</p>
                    
                 </div>
-                
             </div>
  @endforeach
  

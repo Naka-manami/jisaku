@@ -17,13 +17,17 @@
               </th>
             </tr>
           </thead>
+          
           <tbody>
+          @foreach($items as $item)
             <tr>
-              <th scope ='col'></th>
-              <th scope ='col'></th>
+              <th scope ='col'>{{$item['item_name']}}</th>
+              <th scope ='col'>{{$item['price']}}</th>
               <th scope ='col'></th>
               <th scope ='col'></th>
             </tr>
+            @endforeach
+
           </tbody>
         </table>
       </div>

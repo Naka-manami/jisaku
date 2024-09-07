@@ -18,15 +18,27 @@ Auth::routes();
 //ホームボタンクリックでホームに戻る
 Route::get('/', 'DisplayController@index')->name('home');
 
+//商品画像クリックで商品詳細ページへ移動
+Route::get('/item_detail/{id}', 'itemController@itemDetail')->name('item.detail');
 //カートボタンクリックでカートページへ移動
-Route::get('/cart', 'CartController@cart')->name('cart');
+Route::get('/cart/{id}', 'CartController@cart')->name('cart');
 //カート内「次へ」ボタンクリックで購入ページへ移動
-Route::post('buys/buy', 'CartController@buy')->name('buy');
-//購入画面「購入」ボタンクリックで購入完了画面へ移動
+Route::post('/cart/{id}', 'CartController@cartcomp');
+//ヘッダー内カートボタンクリックでカートリストへ
+Route::get('/cartlist', 'CartController@cartList')->name('cart.list');
+
+
+//購入画面「購入」ボタンクリックで購入確認画面へ移動
+Route::post('buys/itembuy_conf', 'CartController@itembuyConf')->name('itembuy.conf');
+//購入確認画面「購入」ボタンクリックで購入完了画面へ移動
 Route::post('buys/itembuy_comp', 'CartController@itembuyComp')->name('itembuy.comp');
+//購入確認画面「届け先登録」ボタンクリックで届け先登録画面へ移動
+Route::get('buys/user_detail', 'CartController@userDetail')->name('user.detail');
+//届け先登録画面内「登録」ボタンクリックで購入確認画面へ戻る
+Route::post('buys/itembuy_conf', 'CartController@buckbuyConf')->name('back.buyconf
+');
 //購入完了画面「ホームへ戻る」ボタンクリックでホーム画面へ移動
 Route::get('buys/buy_comp', 'CartController@buyComp')->name('buy.comp');
-
 //お気に入りボタンクリックでお気に入りページへ移動
 Route::get('/favo', 'DisplayController@favo')->name('favo');
 //お気に入りボタンクリックでお気に入りページへ移動

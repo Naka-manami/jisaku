@@ -54,7 +54,7 @@
                                 <a class="nav-link" href="{{ route('favo') }}">お気に入り</a>
                             </li>
                             <li class="nav-cart">
-                                <a class="nav-link" href="{{ route('cart') }}">カート</a>
+                                <a class="nav-link" href="{{ route('cart.list') }}">カート</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -65,7 +65,7 @@
                                     <a class="dropdown-item" href="{{ route('account') }}">
                                             {{__('アカウント情報')}}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('buy') }}">
+                                    <a class="dropdown-item" href="{{ route('cart.list') }}">
                                             {{__('購入履歴')}}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

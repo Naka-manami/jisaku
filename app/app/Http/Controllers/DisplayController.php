@@ -8,7 +8,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Item;
+use App\User;
+
 
 class DisplayController extends BaseController
 {
@@ -19,11 +23,8 @@ class DisplayController extends BaseController
     {
         return view('favo');
     }
-    public function favoCart()
-    {
-        return view('cart');
-    }
- 
+
+    //ホームの商品一覧
     public function index()
     {
         $items = new Item;
@@ -65,7 +66,11 @@ class DisplayController extends BaseController
     //事業者ホームからユーザ一覧へ遷移
     public function moveadminuserlist()
     {
-        return view('admin_userlist');
+        $instans = new User;
+        $users = $instans->all();
+        return view('admin_userlist',[
+            'users' => $users,
+        ]);
     }
     
 }

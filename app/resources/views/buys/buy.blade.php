@@ -5,7 +5,7 @@
   <div class ="container">
     <h1>注文を確定する</h1>
     <div class ="order">
-    <form action="{{ route('itembuy.comp')}}" method="post">
+    <form action="{{ route('back.buycomp')}}" method="post">
     @csrf
         <table class="table">
           <tbody>
