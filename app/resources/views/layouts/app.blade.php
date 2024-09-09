@@ -65,7 +65,7 @@
                                     <a class="dropdown-item" href="{{ route('account') }}">
                                             {{__('アカウント情報')}}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('cart.list') }}">
+                                    <a class="dropdown-item" href="{{ route('buyhistory') }}">
                                             {{__('購入履歴')}}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

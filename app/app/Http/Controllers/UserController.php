@@ -15,9 +15,8 @@ use App\Cart;
 class UserController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public function createSpendForm(){
-        
-    }
+
+    
     public function accountEdit()
     {
         return view('accounts/account_edit');

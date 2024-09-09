@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DisplayController;
+use App\Http\Controllers\CartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,18 +29,17 @@ Route::post('/cart/{id}', 'CartController@cartcomp');
 //ヘッダー内カートボタンクリックでカートリストへ
 Route::get('/cartlist', 'CartController@cartList')->name('cart.list');
 
-
+//届け先登録画面内「登録」ボタンクリックで購入確認画面へ戻る
+Route::post('buys/itembuy_conf', 'CartController@backbuyConf')->name('back.buyconf');
 //購入画面「購入」ボタンクリックで購入確認画面へ移動
-Route::post('buys/itembuy_conf', 'CartController@itembuyConf')->name('itembuy.conf');
+Route::post('buys/itembuy_conf/{id}', 'CartController@itembuyConf')->name('itembuy.conf');
 //購入確認画面「購入」ボタンクリックで購入完了画面へ移動
-Route::post('buys/itembuy_comp', 'CartController@itembuyComp')->name('itembuy.comp');
+Route::post('buys/itembuy_comp/{id}', 'CartController@itembuyComp')->name('itembuy.comp');
 //購入確認画面「届け先登録」ボタンクリックで届け先登録画面へ移動
 Route::get('buys/user_detail', 'CartController@userDetail')->name('user.detail');
-//届け先登録画面内「登録」ボタンクリックで購入確認画面へ戻る
-Route::post('buys/itembuy_conf', 'CartController@buckbuyConf')->name('back.buyconf
-');
+
 //購入完了画面「ホームへ戻る」ボタンクリックでホーム画面へ移動
-Route::get('buys/buy_comp', 'CartController@buyComp')->name('buy.comp');
+Route::get('/buy', 'CartController@buy')->name('buy');
 //お気に入りボタンクリックでお気に入りページへ移動
 Route::get('/favo', 'DisplayController@favo')->name('favo');
 //お気に入りボタンクリックでお気に入りページへ移動
@@ -47,9 +48,9 @@ Route::post('/cart', 'DisplayController@favoCart')->name('favo.cart');
 //マイページ内アカウント情報ボタンクリックでアカウント情報ページへ移動
 Route::get('/accounts/account', 'DisplayController@account')->name('account');
 //マイページ内購入履歴ボタンクリックで購入履歴ページへ移動
-Route::get('/buys/buyhistory', 'DisplayController@buyHistory')->name('buyhistory');
+Route::get('/buys/buyhistory', 'DisplayController@buyhistory')->name('buyhistory');
 
-//アカウント情報画面
+
 //ボタンクリックでアカウント情報変更ページへ移動
 Route::get('/accounts/account_edit', 'UserController@accountEdit')->name('account.edit');
 //ボタンクリックでアカウント情報確認ページへ移動

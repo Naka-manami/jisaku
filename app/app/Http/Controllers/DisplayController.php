@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\User;
+use App\Buyhistory;
 
 
 class DisplayController extends BaseController
@@ -51,14 +52,29 @@ class DisplayController extends BaseController
             'items' => $items,
          ]);
     }
-    //ユーザ情報ページへ遷移
+
     public function account()
     {
-        return view('accounts/account');
-    }//購入履歴へ遷移
-    public function buyHistory()
+        $users = new User;
+        $users=Auth::user();
+      
+
+        return view('accounts/account',[
+            'users' => $users,
+        ]);
+    }
+    
+    //購入履歴へ遷移
+    public function buyhistory()
     {
-        return view('buys/buyhistory');
+        $instance = new Buyhistory;
+        $buyhistorys= $instance->all();
+        $buyhistorys=Auth::user()->buyhistory()->with('item')->get();
+	    // $carts = Cart::with('users:id,image,item_name,price');
+
+        return view('buys/buyhistory',[
+            'buyhistorys' => $buyhistorys,
+        ]);
     }
 
 
@@ -66,8 +82,8 @@ class DisplayController extends BaseController
     //事業者ホームからユーザ一覧へ遷移
     public function moveadminuserlist()
     {
-        $instans = new User;
-        $users = $instans->all();
+        $instance = new User;
+        $users = $instance->all();
         return view('admin_userlist',[
             'users' => $users,
         ]);

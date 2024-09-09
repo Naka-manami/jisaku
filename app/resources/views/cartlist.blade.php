@@ -6,10 +6,11 @@ $totals = 0;
 @endphp
 <div class="container">
 <b>カート</b>
-<form action="{{ route('itembuy.conf')}}" method="post">
-@csrf
+
   <div class="itemcandi">
   @foreach($carts as $cart)
+  <form action="{{ route('itembuy.conf',['id'=>$cart['id']])}}" method="post">
+  @csrf
     <img src="images/pic1.jpeg" id="pic">
     <p>{{$cart['item']['item_name']}}</p>
     <p>単価</p>
@@ -23,12 +24,13 @@ $totals = 0;
     @endphp
     <p>{{$total}} 円</p>
 
+    <input type="submit" value="次へ">
+    </form>
   @endforeach
   </div>
   <b>合計額</b>
   <p>{{$totals}} 円</p>
 
-  <input type="submit" value="次へ">
-</form>
+ 
 </div>
 @endsection

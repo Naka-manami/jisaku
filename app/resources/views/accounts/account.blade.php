@@ -13,12 +13,14 @@
 			<label for="address">住所</label>
     </div>
     <div class ="label right">
-			<label for="account_name">{{''}}</label>
-      <label for="email">{{''}}</label>
-			<label for="name">{{''}}</label>
-			<label for="tel">{{''}}</label>
-			<label for="post">{{''}}</label>
-			<label for="address">{{''}}</label>
+    @foreach($users as $user)
+			<label for="account_name">{{ $user['account_name']}}</label>
+      <label for="email">{{ $user['email']}}</label>
+			<label for="name">{{ $user['name']}}</label>
+			<label for="tel">{{ $user['tel']}}</label>
+			<label for="post">{{ $user['post']}}</label>
+			<label for="address">{{ $user['address']}}</label>
+    @endforeach
     </div>
    
     <a class="hennkou" href="{{ route('account.edit') }}">{{__('変更')}}</a>

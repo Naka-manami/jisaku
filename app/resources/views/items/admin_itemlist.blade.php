@@ -21,10 +21,15 @@
           <tbody>
           @foreach($items as $item)
             <tr>
-              <th scope ='col'>{{$item['item_name']}}</th>
-              <th scope ='col'>{{$item['price']}}</th>
-              <th scope ='col'></th>
-              <th scope ='col'></th>
+              <th scope ='col'>{{$item['item']['item_name']}}</th>
+              <th scope ='col'>{{$item['item']['price']}}</th>
+              <th scope ='col'>{{$item['count']}}</th>
+              <th scope ='col'>
+              @php
+              $total = $item['item']['price'] * $item['count'];
+              @endphp
+              {{$total}}
+              </th>
             </tr>
             @endforeach
 

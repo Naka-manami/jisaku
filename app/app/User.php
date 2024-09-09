@@ -25,6 +25,9 @@ class User extends Authenticatable
     public function cart(){
         return $this->hasmany('App\Cart','user_id','id');
     }
+    public function buyhistory(){
+        return $this->hasmany('App\Buyhistory','user_id','id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

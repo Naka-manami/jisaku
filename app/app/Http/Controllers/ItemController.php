@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Item;
+use App\Buyhistory;
+
 
 
 class ItemController extends BaseController
@@ -78,11 +80,12 @@ class ItemController extends BaseController
 
     
     //事業者用商品一覧へ移動
-    public function moveadminitemlist()
+    public function moveadminitemlist(Request $request)
     {
-        $instans = new Item;
-        $items = $instans->all();
+        //購入履歴のitem_idとitemテーブルのidが同じ物の販売個数を取得
 
+        $buys= new Buyhistory;
+        $items= $buys->with('item')->get();
 
         return view('items/admin_itemlist',[
             'items' => $items,
