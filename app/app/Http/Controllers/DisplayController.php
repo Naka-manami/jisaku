@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Item;
 use App\User;
 use App\Buyhistory;
+use App\Review;
+
 
 
 class DisplayController extends BaseController
@@ -53,14 +55,11 @@ class DisplayController extends BaseController
          ]);
     }
 
-    public function account()
+    public function account(Request $request)
     {
-        $users = new User;
-        $users=Auth::user();
-      
-
+        $user=Auth::user();
         return view('accounts/account',[
-            'users' => $users,
+            'user'=> $user,
         ]);
     }
     
@@ -69,12 +68,31 @@ class DisplayController extends BaseController
     {
         $instance = new Buyhistory;
         $buyhistorys= $instance->all();
-        $buyhistorys=Auth::user()->buyhistory()->with('item')->get();
 	    // $carts = Cart::with('users:id,image,item_name,price');
-
         return view('buys/buyhistory',[
             'buyhistorys' => $buyhistorys,
         ]);
+    }
+    public function writeReview(int $id)
+    {
+
+        return view('reviews/write_review',[
+            'id' => $id,
+        ]);
+    }
+    public function writeComp(int $id,Request $request)
+    {
+        $review = new Review;
+        $review -> item_id = $id ;
+
+        $review ->title = $request -> title;
+        $review ->content = $request -> content;
+        
+        $user=Auth::user();
+        $review -> user_id = $user -> id;
+        $review->save();
+
+        return view('reviews/writereview_comp');
     }
 
 

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Item;
 use App\Buyhistory;
+use App\Review;
+
 
 
 
@@ -41,17 +43,18 @@ class ItemController extends BaseController
          ]);
     }
 
+    //商品詳細
      public function itemDetail(int $id)
     {
         $instance = new Item;
         $item = $instance->find($id);
 
-        // $record->image = $request->image;
-        // $record->item_name = $request->item_name;
-        // $record->price = $request->price;
+        $reviews = new Review;
+        $review = $reviews->find($id);
         return view('items/item_detail',[
             'id' => $id,
             'item' =>$item,
+            'review' => $review,
         ]);
     }
 

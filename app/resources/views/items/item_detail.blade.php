@@ -9,6 +9,12 @@
     <p>{{$item['price']}}</p>
     <p>♡</p>
   </div>
+  <div>
+    <p>レビュー</p>
+    <p>{{ $review['title'] }}</p>
+    <p>{{ $review['content'] }}</p>
+  </div>
+
     <a href="{{route('cart',['id'=>$item['id']]) }}">カートへ</a>
 </main>
 @endsection

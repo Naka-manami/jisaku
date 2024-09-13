@@ -9,7 +9,7 @@ $totals = 0;
 
   <div class="itemcandi">
   @foreach($carts as $cart)
-  <form action="{{ route('itembuy.conf',['id'=>$cart['id']])}}" method="post">
+  <form action="{{ route('itembuy.conf',['id'=>$cart['id']])}}" method="get">
   @csrf
     <img src="images/pic1.jpeg" id="pic">
     <p>{{$cart['item']['item_name']}}</p>

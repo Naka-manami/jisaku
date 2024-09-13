@@ -19,7 +19,8 @@ $totals = 0;
     <p>{{$buyhistory['count']}} 個</p>
     <p>購入日</p>
     <p>{{$buyhistory['created_at']}} </p>
-  
+    <a href="{{ route('write.review',['id'=>$buyhistory['item_id']])}}">レビューを書く</a>
+
   @endforeach
   </div> 
 </div>

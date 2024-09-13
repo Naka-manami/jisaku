@@ -16,16 +16,16 @@
       </div>
       <div class ="account">
         <div class ="accountdetail">
-          @foreach($users as $user)
+
           <label for="total">お届け先氏名</label>
-          <p>{{$user['name']}}</p>
+          <p>{{$users->name }}</p>
           <label for="total">お届け先郵便番号</label>
-          <p>{{$user['post']}}</p>
+          <p>{{$users->post}}</p>
           <label for="total">お届け先住所</label>
-          <p>{{$user['address']}}</p>
-          @endforeach
+          <p>{{$users->address}}</p>
+
         </div>
-        <a href="{{ route('user.detail')}}">お届け先登録</a>
+        <a href="{{ route('user.detail',['cartid'=>$cart['id']])}}">お届け先登録</a>
       </div>
     <input type="submit" value="購入">
 

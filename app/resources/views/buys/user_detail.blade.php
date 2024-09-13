@@ -4,7 +4,7 @@
 <main>
     <div class="container">
       <div class="itemlist">
-        <form action="{{ route('back.buyconf')}}" method="post">
+        <form action="{{ route('back.buyconf',['cartid'=>$cartid])}}" method="post">
         @csrf
         
               <div class ="itemlist-header">
@@ -12,11 +12,15 @@
               </div>
               
               <div class="form-group">
-                <label for="item_name">お届け先氏名</label>
+                <label for="name">お届け先氏名</label>
                 <input type="text" class="form" id="name" name="name">
               </div>
               <div class="form-group">
-                <label for="price">お届け先郵便番号</label>
+                <label for="tel">お届け電話番号</label>
+                <input type="text" class="form" id="tel" name="tel">
+              </div>
+              <div class="form-group">
+                <label for="post">お届け先郵便番号</label>
                 <input type="text" class="form" id="post" name="post">
               </div>
               <div class="form-group">

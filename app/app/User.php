@@ -28,6 +28,9 @@ class User extends Authenticatable
     public function buyhistory(){
         return $this->hasmany('App\Buyhistory','user_id','id');
     }
+    public function review(){
+        return $this->hasmany('App\Review','user_id','id');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

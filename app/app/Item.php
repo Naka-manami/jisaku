@@ -11,4 +11,7 @@ class Item extends Model
     public function user(){
         return $this->belongsto('App\User','user_id','id');
     }
+    public function review(){
+        return $this->hasmany('App\Review','item_id','id');
+    }
 }
