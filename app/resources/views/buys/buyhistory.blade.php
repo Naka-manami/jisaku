@@ -10,7 +10,7 @@ $totals = 0;
   <div class="itemcandi">
   @foreach($buyhistorys as $buyhistory)
    
-    <img src="images/pic1.jpeg" id="pic">
+    <img src="{{ asset('img/' . $buyhistory['item']->id . '/' . $buyhistory['item']->image) }}">
 
     <p>{{$buyhistory['item']['item_name']}}</p>
     <p>単価</p>

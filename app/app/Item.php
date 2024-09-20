@@ -14,4 +14,8 @@ class Item extends Model
     public function review(){
         return $this->hasmany('App\Review','item_id','id');
     }
+    public function likes()
+    {
+      return $this->hasMany('App\Like','item_id','id');
+    }
 }

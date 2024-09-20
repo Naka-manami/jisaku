@@ -23,14 +23,7 @@ class UserController extends BaseController
     public function accountEdit(int $id,Request $request)
     {
         $user = new User;
-        $user = Auth::user();
-        $user -> account = $request ->account;
-        $user -> email = $request ->mail;
-        $user -> name = $request ->name;
-        $user -> tel = $request ->tel;
-        $user -> post = $request ->post;
-        $user -> address = $request ->address;
-      
+        $user = Auth::user($id);
 
         return view('accounts/account_edit',[
             'user' => $user,

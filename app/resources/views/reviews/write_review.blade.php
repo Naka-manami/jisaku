@@ -6,8 +6,11 @@
     <form action="{{ route('write.comp',['id'=>$id])}}" method="post">
     @csrf
           <div class="form-group">
+          <p>購入品：{{$item['item_name']}}</p>
+          <img src="{{ asset('img/' . $item->id . '/' . $item->image) }}">
+
             <label for="title">タイトル</label>
-            <input type="text" class="form" id="title" name="title" valeu="{{ old('title') }}">
+            <input type="text" class="form" id="title" name="title" value="{{ old('title') }}">
           </div>
           <div class="form-group">
             <label for="content">コメント</label>

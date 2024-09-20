@@ -11,15 +11,22 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <style>
+        .loved i {
+        color: red !important;
+        }
+    </style>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -92,5 +99,46 @@
             @yield('content')
         </main>
     </div>
+    <script>
+       $(function () {
+            var like = $('.js-like-toggle');
+            var likeItemId;
+
+            like.on('click', function () {
+                var $this = $(this);
+                likeItemId = $this.data('itemid');
+                $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '/ajaxlike',  //routeの記述
+                        type: 'POST', //受け取り方法の記述（GETもある）
+                        data: {
+                            'item_id': likeItemId //コントローラーに渡すパラメーター
+                        },
+                })
+
+                    // Ajaxリクエストが成功した場合
+                    .done(function (data) {
+            //lovedクラスを追加
+                        $this.toggleClass('loved'); 
+
+            //.likesCountの次の要素のhtmlを「data.postLikesCount」の値に書き換える
+                        $this.next('.likesCount').html(data.itemLikesCount); 
+
+                    })
+                    // Ajaxリクエストが失敗した場合
+                    .fail(function (data, xhr, err) {
+            //ここの処理はエラーが出た時にエラー内容をわかるようにしておく。
+            //とりあえず下記のように記述しておけばエラー内容が詳しくわかります。笑
+                        console.log('エラー');
+                        console.log(err);
+                        console.log(xhr);
+                    });
+                
+                return false;
+            });
+}); 
+    </script>
 </body>
 </html>

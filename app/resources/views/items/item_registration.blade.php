@@ -3,16 +3,13 @@
 @section('content')
 <main>
     <div class="itemlist">
-    <form action="{{ route('item.registrationcomp')}}" method="post">
+    <form action="{{ route('item.registrationcomp')}}" method="post"  enctype="multipart/form-data">
     @csrf
     
-          <div class ="itemlist-header">
-            <b class ="txet-center">商品登録</b>
-          </div>
           <div class="form-group">
-            <label for="image"></label>
-            <!-- <img src="" id="pic" name="" value="{{ old('image') }}"> -->
-            <input type="text" class="form" id="image" name="image" valeu="{{ old('image') }}">
+            <label for="image">画像登録</label>
+           
+            <input type="file" class="form" id="image" name="image" value="">
 
           </div>
           <div class="form-group">
@@ -21,7 +18,7 @@
           </div>
           <div class="form-group">
             <label for="price">価格</label>
-            <input type="text" class="form" id="price" name="price" valeu="{{old ('price') }}">
+            <input type="text" class="form" id="price" name="price" value="{{old ('price') }}">
           </div>
           <div class="form-group">
             <label for="detail">商品詳細</label>

@@ -11,8 +11,8 @@ $totals = 0;
   @foreach($carts as $cart)
   <form action="{{ route('itembuy.conf',['id'=>$cart['id']])}}" method="get">
   @csrf
-    <img src="images/pic1.jpeg" id="pic">
-    <p>{{$cart['item']['item_name']}}</p>
+  <img src="{{ asset('img/' . $cart['item']->id . '/' . $cart['item']->image) }}">
+  <p>{{$cart['item']['item_name']}}</p>
     <p>単価</p>
     <p>{{$cart['item']['price']}} 円</p>
     <p>数量</p>

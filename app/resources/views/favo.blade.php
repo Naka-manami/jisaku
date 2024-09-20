@@ -3,20 +3,16 @@
 @section('content')
 <div class="container">
 <h>お気に入り一覧</h>
-<form action="{{ route('favo.cart')}}" method="post">
-@csrf
+<div class="itemcandi">
+  @foreach($likes as $like)
+    <img src="{{ asset('img/' . $like['item']->id . '/' . $like['item']->image) }}">
+    <p>{{$like['item']['item_name']}}</p>
+    <p>単価</p>
+    <p>{{$like['item']['price']}} 円</p>
+    </form>
+  @endforeach
+  </div> 
+  <a href="{{ route('home')}}">ホームへ戻る</a>
 
-  <div class="itemcandi">
-    <input type="checkbox" checked="checked" name="checkbox" value="0">
-    <a href="遷移させたいURL"> 
-      <img src="images/pic1.jpeg" id="pic">
-    </a>
-    <p class="itemname"></p>
-    <p class="price"></p>
-    <p class="favodate"></p>
-    <button type='submit' class='cartin'>カートに入れる</button>
-
-  </div>
-</form>
 </div>
 @endsection

@@ -4,7 +4,7 @@
 <main>
     <div class="container">
         <div class="row justify-content-center">
-            <form action="{{ route('item.search') }}" method="GET"> 
+            <form action="{{ route('item.list') }}" method="GET"> 
             <div class="price.search">
                 <label for="price">{{ __('価格') }}</label>
 
